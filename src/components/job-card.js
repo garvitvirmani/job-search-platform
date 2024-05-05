@@ -1,4 +1,4 @@
-import { Box, Card, Chip, Paper, Typography } from "@mui/material";
+import { Box, Button, Card, Chip, Paper, Typography } from "@mui/material";
 import React from "react";
 
 const JobCard = () => {
@@ -12,6 +12,7 @@ const JobCard = () => {
         display: "flex",
         flexDirection: "column",
         padding: "8px 16px",
+        //  backgroundColor: "red",
       }}
       elevation={3}
     >
@@ -54,6 +55,88 @@ const JobCard = () => {
       >
         Estimated Salary: ₹10 - 14 LPA ⚠️
       </Typography>
+      <Typography
+        variant="h4"
+        component="h4"
+        sx={{ fontSize: "14px", fontWeight: 500 }}
+      >
+        About Company:
+      </Typography>
+      <Box>
+        <Typography
+          variant="h3"
+          component="h3"
+          sx={{ fontSize: "13px", color: "#8B8B8B" }}
+        >
+          Minium Experience
+        </Typography>
+        <Typography variant="h4" component="h4" sx={{ fontSize: "14px" }}>
+          1 years
+        </Typography>
+      </Box>
+
+      <section style={{ position: "relative" }}>
+        <div
+          className="fadeout"
+          style={{
+            position: "absolute",
+            bottom: 0,
+            height: "8em",
+            width: "100%",
+            zIndex: 2,
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              bottom: 0,
+              height: "100%",
+              width: "100%",
+              background:
+                "linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1))",
+            }}
+          ></div>
+        </div>
+        <p>
+          senectus et netus et malesuada fames ac turpis egestas. Vestibulum
+          tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+          Donec eu libero sit amet quam egestas semper. Aenean ultricies mi
+          vitae est. Mauris placerat eleifend leo.senectus et netus et malesuada
+          fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
+          ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
+          egestas semper. Aenean ultricies mi vitae est. Mauris placerat
+          eleifend leo.
+        </p>
+        <Button
+          color="primary"
+          style={{
+            textTransform: "none",
+            position: "absolute",
+            bottom: "1em",
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: "10000",
+          }}
+        >
+          Show More
+        </Button>
+      </section>
+
+      <Button
+        variant="contained"
+        sx={{
+          fontSize: "16px",
+          fontWeight: "500",
+          color: "black",
+          backgroundColor: "#55EFC4",
+          "&:hover": {
+            backgroundColor: "#55EFC4",
+          },
+        }}
+        disableElevation
+      >
+        ⚡️ Easy Apply
+      </Button>
     </Paper>
   );
 };
