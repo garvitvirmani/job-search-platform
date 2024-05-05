@@ -1,7 +1,26 @@
 import { Box, Button, Card, Chip, Paper, Typography } from "@mui/material";
 import React from "react";
 
-const JobCard = () => {
+const JobCard = ({ job }) => {
+  const {
+    jdUid,
+    jdLink,
+    jobDetailsFromCompany,
+    maxJSalary,
+    minJdSalary,
+    salaryCurrencyCode,
+    location,
+    minExp,
+    maxExp,
+    jobRole,
+    companyName,
+    logoUrl,
+  } = job;
+
+  const trimString = (str, maxLength) => {
+    return str.length > maxLength ? str.slice(0, maxLength) : str;
+  };
+
   return (
     <Paper
       sx={{
@@ -26,11 +45,11 @@ const JobCard = () => {
         <Box
           component="img"
           sx={{
-            height: 24,
+            height: 40,
             width: 40,
           }}
           alt="company logo"
-          src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg"
+          src={logoUrl}
         />
         <Box>
           <Typography
@@ -38,13 +57,13 @@ const JobCard = () => {
             component="h3"
             sx={{ fontSize: "13px", color: "#8B8B8B" }}
           >
-            Google
+            {companyName}
           </Typography>
           <Typography variant="h4" component="h4" sx={{ fontSize: "14px" }}>
-            Senior Frontend Digital Developer - Creative
+            {jobRole}
           </Typography>
           <Typography variant="h4" component="h4" sx={{ fontSize: "11px" }}>
-            Bengaluru
+            {location}
           </Typography>
         </Box>
       </Box>
@@ -53,7 +72,7 @@ const JobCard = () => {
         component="h4"
         sx={{ fontSize: "14px", color: "#4D596A" }}
       >
-        Estimated Salary: ₹10 - 14 LPA ⚠️
+        Estimated Salary: ₹{minJdSalary} - {maxJSalary} LPA ⚠️
       </Typography>
       <Typography
         variant="h4"
@@ -62,21 +81,9 @@ const JobCard = () => {
       >
         About Company:
       </Typography>
-      <Box>
-        <Typography
-          variant="h3"
-          component="h3"
-          sx={{ fontSize: "13px", color: "#8B8B8B" }}
-        >
-          Minium Experience
-        </Typography>
-        <Typography variant="h4" component="h4" sx={{ fontSize: "14px" }}>
-          1 years
-        </Typography>
-      </Box>
 
       <section style={{ position: "relative" }}>
-        <div
+        <Box
           className="fadeout"
           style={{
             position: "absolute",
@@ -86,7 +93,7 @@ const JobCard = () => {
             zIndex: 2,
           }}
         >
-          <div
+          <Box
             style={{
               position: "absolute",
               bottom: 0,
@@ -95,18 +102,9 @@ const JobCard = () => {
               background:
                 "linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1))",
             }}
-          ></div>
-        </div>
-        <p>
-          senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-          tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
-          Donec eu libero sit amet quam egestas semper. Aenean ultricies mi
-          vitae est. Mauris placerat eleifend leo.senectus et netus et malesuada
-          fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-          ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
-          egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-          eleifend leo.
-        </p>
+          ></Box>
+        </Box>
+        <Typography>{trimString(jobDetailsFromCompany, 400)}</Typography>
         <Button
           color="primary"
           style={{
@@ -122,6 +120,18 @@ const JobCard = () => {
         </Button>
       </section>
 
+      <Box>
+        <Typography
+          variant="h3"
+          component="h3"
+          sx={{ fontSize: "13px", color: "#8B8B8B" }}
+        >
+          Minium Experience
+        </Typography>
+        <Typography variant="h4" component="h4" sx={{ fontSize: "14px" }}>
+          {minExp} years
+        </Typography>
+      </Box>
       <Button
         variant="contained"
         sx={{
